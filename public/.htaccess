@@ -1,0 +1,15 @@
+Options -Indexes
+
+RewriteEngine On
+RewriteBase /
+
+RewriteRule (^|/)\.teleclip-data - [F,L]
+
+RewriteRule ^api/create/?$ api/create.php [L,QSA]
+RewriteRule ^api/reflect/?$ api/reflect.php [L,QSA]
+RewriteRule ^api/reflect/([A-Za-z0-9_-]+)/?$ api/reflect-item.php?id=$1 [L,QSA]
+RewriteRule ^api/clipboard/([A-Za-z0-9_-]+)/?$ api/clipboard.php?id=$1 [L,QSA]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.html [L]
